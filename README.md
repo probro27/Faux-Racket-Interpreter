@@ -1,21 +1,29 @@
-# Faux-Racket-Interpreter
-A Faux-Racket-Interpreter in Haskell.
+# Faux Racket Interpreter
 
-This will evaluate the expressions of Racket and compute their result. 
+## Overview
 
-We support the following operators:
+This is a simple interpreter for a subset of the Racket programming language. It supports basic arithmetic operations, variable binding, function definition, and function application.
 
-- numbers
-- variables
-- functions
-- applications
-- with {with (var, args) body}
-- seq
-- set
+## Features
 
-We are using Monads in order to abstract away the state and the output stream. 
+- Arithmetic Operations: Addition, subtraction, multiplication, and division of numbers.
+- Variable Binding: Ability to bind variables to values using the `With` construct.
+- Function Definition: Define functions using the `Fun` construct.
+- Function Application: Apply functions to arguments using the `App` construct.
+- Error Handling: Detects division by zero errors and reports them appropriately.
 
-interp :: Ast -> Env -> State Val
-interp (ADD 1 2) Empty --> Empty (Numb 3)
+## Usage
 
-Feel free to use!!
+To use the interpreter, you can define your Racket expressions as Abstract Syntax Trees (ASTs) and then use the provided `run` and `runDebug` functions to interpret them.
+
+### Example
+
+```haskell
+import RacketInterpreter
+
+main :: IO ()
+main = do
+    let ast = BinOp Add (Number 5) (Number 3)
+    let result = run ast
+    putStrLn $ "Result: " ++ show result
+```
