@@ -1,4 +1,4 @@
-# Faux Racket Interpreter
+# Faux Racket Interpreter in Haskell
 
 ## Overview
 
